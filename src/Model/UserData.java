@@ -1,6 +1,7 @@
-package Controller;
+package Model;
 
-public class UserDataController {
+public class UserData
+{
     private static String NickName;
     private static String IP;
     private static int port;
@@ -16,7 +17,7 @@ public class UserDataController {
 
     public static void setIP(String IP)
     {
-        UserDataController.IP = IP;
+        UserData.IP = IP;
     }
     public static String getIP()
     {
@@ -24,7 +25,7 @@ public class UserDataController {
     }
     public static void setPort(int port)
     {
-        UserDataController.port = port;
+        UserData.port = port;
     }
     public static int getPort()
     {

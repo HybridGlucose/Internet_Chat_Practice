@@ -1,10 +1,14 @@
 package View;
 
+import Model.Client;
+import Model.Server;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
-import  Controller.UserDataController;
+import Model.UserData;
+import javafx.util.converter.NumberStringConverter;
 
 public class ModeSelectController
 {
@@ -21,14 +25,18 @@ public class ModeSelectController
 		//TODO  Fix when Client finished will still run in Server mode.
 		if(mode == 1)
 		{
-			UserDataController.setIP(IPField.getText());
+			UserData.setIP(IPField.getText());
 		}
-		UserDataController.setPort(Integer.parseInt(PortField.getText()));
+		UserData.setPort(Integer.parseInt(PortField.getText()));
 		if(mode == 1)
 		{
-			new Model.Client().run();
+			Model.Client client = new Client();
+			Thread clientThread = new Thread(client);
+			clientThread.start();
 		}
-		new Model.server().run();
+		Model.Server server = new Server();
+		Thread serverThread = new Thread(server);
+		serverThread.start();
 	}
 
 	public void cancelBtnOnClick()

@@ -4,16 +4,6 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ModeSelectController">
   <columnConstraints>
@@ -51,7 +41,7 @@
             </Label>
          </left>
          <right>
-            <TextField fx:id="IPField" BorderPane.alignment="CENTER">
+            <TextField fx:id="IPField" editable="false" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets right="40.0" />
                </BorderPane.margin>
@@ -76,12 +66,12 @@
       </BorderPane>
       <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <center>
-            <Button fx:id="CancelBtn" mnemonicParsing="false" onAction="#cancelBtnOnClick" text="Cancel" BorderPane.alignment="CENTER" />
+            <Button fx:id="CancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancelBtnOnClick" text="Cancel" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
       <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <center>
-            <Button fx:id="SubmitBtn" mnemonicParsing="false" onAction="#submitBtnOnClick" text="Submit" BorderPane.alignment="CENTER" />
+            <Button fx:id="SubmitBtn" defaultButton="true" mnemonicParsing="false" onAction="#submitBtnOnClick" text="Submit" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>

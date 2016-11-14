@@ -2,7 +2,6 @@ package Model;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Client implements Runnable
 {
@@ -13,8 +12,8 @@ public class Client implements Runnable
 	public void clientMode()
 	{
 		System.out.println("Client Mode!");
-		Client.port = Controller.UserDataController.getPort();
-		Client.ip = Controller.UserDataController.getIP();
+		Client.port = UserData.getPort();
+		Client.ip = UserData.getIP();
 	}
 
 	@Override
@@ -24,15 +23,14 @@ public class Client implements Runnable
 		{
 			new Client().clientMode();
 			socket = new Socket(ip, port);
-			if (socket != null)
-			{
-				BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				System.out.println(br.readLine());
-				socket.close();
-			}
+			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			System.out.println(br.readLine());
+			socket.close();
 		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
+		Thread thread = Thread.currentThread();
+		thread.stop();
 	}
 }

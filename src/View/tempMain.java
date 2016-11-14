@@ -1,6 +1,7 @@
 package View;
 
 import Model.Client;
+import Model.Server;
 
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class tempMain
 		System.out.println("Please select a mode:\n1.Server Mode.\n2.Client Mode.");
 		if (new Scanner(System.in).nextInt() == 1)
 		{
-			new Model.server().run();
+			new Server().run();
 		} else
 		{
 			new Client().run();

@@ -4,9 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 
-public class server implements Runnable
+public class Server implements Runnable
 {
 	private ServerSocket server_socket;
 	private Socket comm_socket;
@@ -14,7 +13,7 @@ public class server implements Runnable
 	public int serverMode()
 	{
 		System.out.println("Server Mode Start!");
-		return Controller.UserDataController.getPort();
+		return UserData.getPort();
 	}
 
 	@Override
@@ -41,5 +40,7 @@ public class server implements Runnable
 		{
 			e.printStackTrace();
 		}
+		Thread thread = Thread.currentThread();
+		thread.stop();
 	}
 }

@@ -1,6 +1,7 @@
 package View;
 
 
+import Model.UserData;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,7 +17,7 @@ public class LoginController
 
 	public void submitBtnOnClick() throws IOException
 	{
-		Controller.UserDataController.setNickName(NickNameField.getText());
+		UserData.setNickName(NickNameField.getText());
 		//Get Parent Stage.
 		Stage stage  = (Stage) SubmitBtn.getScene().getWindow();
 		stage.hide();
