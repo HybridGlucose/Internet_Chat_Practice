@@ -12,11 +12,9 @@ public class Client implements Runnable
 
 	public void clientMode()
 	{
-		System.out.println("Client Mode!\nPlease input IP:");
-		Scanner scn = new Scanner(System.in);
-		Client.ip = scn.next();
-		System.out.println("Please input port:");
-		Client.port = scn.nextInt();
+		System.out.println("Client Mode!");
+		Client.port = Controller.UserDataController.getPort();
+		Client.ip = Controller.UserDataController.getIP();
 	}
 
 	@Override

@@ -14,10 +14,7 @@ public class server implements Runnable
 	public int serverMode()
 	{
 		System.out.println("Server Mode Start!");
-		System.out.println("Server Mode!\nPlease input port:");
-		Scanner scn = new Scanner(System.in);
-		int port = scn.nextInt();
-		return port;
+		return Controller.UserDataController.getPort();
 	}
 
 	@Override

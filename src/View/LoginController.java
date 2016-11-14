@@ -16,6 +16,7 @@ public class LoginController
 
 	public void submitBtnOnClick() throws IOException
 	{
+		Controller.UserDataController.setNickName(NickNameField.getText());
 		//Get Parent Stage.
 		Stage stage  = (Stage) SubmitBtn.getScene().getWindow();
 		stage.hide();
