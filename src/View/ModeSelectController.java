@@ -2,13 +2,14 @@ package View;
 
 import Model.Client;
 import Model.Server;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import Model.UserData;
 import javafx.util.converter.NumberStringConverter;
+
+import java.io.IOException;
 
 public class ModeSelectController
 {
@@ -18,45 +19,25 @@ public class ModeSelectController
 	public TextField PortField;
 	public Button CancelBtn;
 	public Button SubmitBtn;
-	private int mode;//mode 0 is Server.
 
-	public void submitBtnOnClick()
+	public void submitBtnOnClick() throws IOException
 	{
 		//TODO  Fix when Client finished will still run in Server mode.
-		if(mode == 1)
-		{
-			UserData.setIP(IPField.getText());
-		}
+		UserData.setIP(IPField.getText());
 		UserData.setPort(Integer.parseInt(PortField.getText()));
-		if(mode == 1)
-		{
-			Model.Client client = new Client();
-			Thread clientThread = new Thread(client);
-			clientThread.start();
-		}
-		Model.Server server = new Server();
-		Thread serverThread = new Thread(server);
+		Thread clientThread = new Thread(new Client(),"clientThread");
+		Thread serverThread = new Thread(new Server(),"serverThread");
+		clientThread.start();
 		serverThread.start();
+		SubmitBtn.setDisable(true);
+		Stage stage = (Stage) SubmitBtn.getScene().getWindow();
+		stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Chat.fxml")),240,360));
 	}
 
 	public void cancelBtnOnClick()
 	{
-		Stage stage  = (Stage) SubmitBtn.getScene().getWindow();
+		Stage stage = (Stage) SubmitBtn.getScene().getWindow();
 		stage.close();
 	}
 
-	public void modeSelect()
-	{
-		if (ServerRadio.isSelected())
-		{
-			//Server Mode Selected.
-			IPField.setEditable(false);
-			mode = 0;
-		} else
-		{
-			//Client Mode Selected.
-			IPField.setEditable(true);
-			mode = 1;
-		}
-	}
 }

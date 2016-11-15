@@ -3,6 +3,8 @@ package Model;
 import java.io.*;
 import java.net.Socket;
 
+import View.ChatController;
+
 public class Client implements Runnable
 {
 	private static String ip;
@@ -11,7 +13,6 @@ public class Client implements Runnable
 
 	public void clientMode()
 	{
-		System.out.println("Client Mode!");
 		Client.port = UserData.getPort();
 		Client.ip = UserData.getIP();
 	}
@@ -19,18 +20,21 @@ public class Client implements Runnable
 	@Override
 	public void run()
 	{
+		new Client().clientMode();
 		try
 		{
-			new Client().clientMode();
 			socket = new Socket(ip, port);
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			System.out.println(br.readLine());
+			while (br.readLine() != "exit")
+			{
+				ChatController.printGetMessage(br.readLine());
+			}
 			socket.close();
+			Thread thread = Thread.currentThread();
+			thread.stop();
 		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
-		Thread thread = Thread.currentThread();
-		thread.stop();
 	}
 }

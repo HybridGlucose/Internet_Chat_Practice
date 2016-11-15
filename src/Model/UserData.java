@@ -5,6 +5,7 @@ public class UserData
     private static String NickName;
     private static String IP;
     private static int port;
+    public static String theyNickName;
 
     public static void setNickName(String nickName)
     {
@@ -13,6 +14,10 @@ public class UserData
     public static String getNickName()
     {
         return NickName;
+    }
+    public static String getTheyNickName()
+    {
+        return theyNickName;
     }
 
     public static void setIP(String IP)

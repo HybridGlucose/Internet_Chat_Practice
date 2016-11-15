@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -19,19 +21,6 @@
       <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
    </padding>
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
-         <center>
-            <RadioButton fx:id="ServerRadio" mnemonicParsing="false" onAction="#modeSelect" onMouseClicked="#modeSelect" selected="true" text="Server" BorderPane.alignment="CENTER">
-               <toggleGroup>
-                  <ToggleGroup fx:id="Mode" />
-               </toggleGroup></RadioButton>
-         </center>
-      </BorderPane>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-         <center>
-            <RadioButton fx:id="ClientRadio" mnemonicParsing="false" onMouseClicked="#modeSelect" text="Client" toggleGroup="$Mode" BorderPane.alignment="CENTER" />
-         </center>
-      </BorderPane>
       <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
          <left>
             <Label text="IP:" BorderPane.alignment="CENTER">
@@ -41,7 +30,7 @@
             </Label>
          </left>
          <right>
-            <TextField fx:id="IPField" editable="false" BorderPane.alignment="CENTER">
+            <TextField fx:id="IPField" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets right="40.0" />
                </BorderPane.margin>
