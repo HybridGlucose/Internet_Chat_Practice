@@ -44,13 +44,9 @@ public class UserData
         onlineUsers.add(count,new onlineUser(nickName,IP));
         count = count + 1;
     }
-    public static void delUser(String nickName)
+    /*public static void delUser(String nickName)
     {
-        if(onlineUsers.iterator().equals(nickName))
-        {
-            onlineUsers.remove(onlineUsers.listIterator().previousIndex()+1);
-        }
-    }
+    }*/
 
 }
 
