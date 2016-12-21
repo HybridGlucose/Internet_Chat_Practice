@@ -46,8 +46,12 @@ public class UserData
     }
     /*public static void delUser(String nickName)
     {
-    }*/
-
+        if(onlineUsers.iterator().equals(nickName))
+        {
+            onlineUsers.remove(onlineUsers.listIterator().previousIndex()+1);
+        }
+    }
+*/
 }
 
 class onlineUser
