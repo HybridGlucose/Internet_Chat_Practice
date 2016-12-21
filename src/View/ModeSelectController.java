@@ -22,13 +22,12 @@ public class ModeSelectController
 
 	public void submitBtnOnClick() throws IOException
 	{
-		//TODO  Fix when Client finished will still run in Server mode.
 		UserData.setIP(IPField.getText());
 		UserData.setPort(Integer.parseInt(PortField.getText()));
-		Thread clientThread = new Thread(new Client(),"clientThread");
+		/*Thread clientThread = new Thread(new Client(),"clientThread");
 		Thread serverThread = new Thread(new Server(),"serverThread");
 		clientThread.start();
-		serverThread.start();
+		serverThread.start();*/
 		SubmitBtn.setDisable(true);
 		Stage stage = (Stage) SubmitBtn.getScene().getWindow();
 		stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Chat.fxml")),240,360));
