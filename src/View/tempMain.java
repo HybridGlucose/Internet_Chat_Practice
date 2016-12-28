@@ -12,10 +12,8 @@ public class tempMain
 		System.out.println("Please select a mode:\n1.Server Mode.\n2.Client Mode.");
 		if (new Scanner(System.in).nextInt() == 1)
 		{
-			new Server().run();
 		} else
 		{
-			new Client().run();
 		}
 	}
 }
