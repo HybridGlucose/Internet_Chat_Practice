@@ -9,7 +9,7 @@ public class Client
     private static final int ServerPort=8888;
     private static final int ClientPort=2234;
     private static final String ServerGroup="224.0.0.3";
-    private static String strTm="";
+    private static String strTmp="";
     private static MulticastSocket socket;
     public static void main(String[] args)
     {
