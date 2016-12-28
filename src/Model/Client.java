@@ -9,9 +9,12 @@ public class Client
     private static final int ServerPort=8888;
     private static final int ClientPort=2234;
     private static final String ServerGroup="224.0.0.3";
-    private static String strTmp;
+    private static String strTmp = "";
     private static MulticastSocket socket;
-    public static void main(String[] args)
+    private static String groupName;
+    private static InetAddress communicateGroup;
+
+    public static void runClient(String groupName)
     {
         try{
             Scanner sc = new Scanner(System.in);
@@ -19,8 +22,8 @@ public class Client
             socket = new MulticastSocket(ClientPort);
             socket.joinGroup(group);
 
-            System.out.println("Please Input Group Name(Join Or Create)");
-            String groupName = sc.nextLine();//input room name
+            //System.out.println("Please Input Group Name(Join Or Create)");
+            //groupName = sc.nextLine();//input room name
 
             //SEND DATA TO SERVER12
             byte flag = (byte)((new Random()).nextDouble() * 255); //random flag
@@ -50,7 +53,7 @@ public class Client
             System.out.println("your room ip is " + communicateAddr);
             //
             socket.leaveGroup(group);
-            InetAddress communicateGroup = InetAddress.getByName(communicateAddr); // java ip format
+            communicateGroup = InetAddress.getByName(communicateAddr); // java ip format
             socket.joinGroup(communicateGroup); //join group
             //RECEIVE LOOP
             Thread therad = new Thread() //執行緒
@@ -59,36 +62,44 @@ public class Client
                 {
                     try{
                         DatagramPacket receive = new DatagramPacket(new byte[1024], 1024);
-                        for(;;) {
-                            socket.receive(receive);//接收
-                            byte[] bbt = Arrays.copyOfRange(receive.getData(), 0, receive.getLength());//統一長度
-                            String tmp = new String(bbt, Charset.forName("UTF-8"));
-                            if(strTmp.equals(tmp))//消除字元
-                            {
-                                strTmp = "";
-                                continue;
-                            }
-                            System.out.println(tmp);
+                            for(;;) {
+                                socket.receive(receive);//接收
+                                byte[] bbt = Arrays.copyOfRange(receive.getData(), 0, receive.getLength());//統一長度
+                                String tmp = new String(bbt, Charset.forName("UTF-8"));
+                                if(strTmp.equals(tmp))//消除字元
+                                {
+                                    strTmp = "";
+                                    continue;
+                                }
+                                System.out.println(tmp);
+                                View.ChatController.receiveMessages(tmp);
                         }
                     } catch(Exception e) {
-                        System.out.print(e.toString());
+                        System.err.print(e.toString());
                         return;
                     }
                 }
             };
             therad.start();
             //
-            for(;;)
+            /*for(;;)
             {
-                String str = sc.nextLine();
-                strTmp = str;
+                //String str = sc.nextLine();
+                //strTmp = str;
+                String str = "";
                 DatagramPacket message =
                         new DatagramPacket(str.getBytes(), str.getBytes().length, communicateGroup, ClientPort);
                 socket.send(message);
-            }
+            }*/
         }catch(Exception e){
-            System.out.println("Error: " + e.toString());
+            System.err.println("Error: " + e.toString());
             return;
         }
+    }
+    public static void sendMessages(String messages) throws IOException
+    {
+            DatagramPacket message =
+                    new DatagramPacket(messages.getBytes(), messages.getBytes().length, communicateGroup, ClientPort);
+            socket.send(message);
     }
 }
