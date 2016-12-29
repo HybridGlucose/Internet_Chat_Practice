@@ -18,7 +18,7 @@ public class RoomName
 	public void submitBtnOnClick() throws IOException
 	{
 		Model.Client.runClient(RoomNameField.getText());
-		UserData.setRoomNumber(RoomNameField.getText());
+		UserData.setRoomName(RoomNameField.getText());
 		Stage stage = (Stage) SubmitBtn.getScene().getWindow();
 		stage.hide();
 		stage.setTitle("Chat-ID: " + Model.UserData.getNickName());

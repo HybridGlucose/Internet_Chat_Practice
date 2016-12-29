@@ -102,4 +102,8 @@ public class Client
                     new DatagramPacket(messages.getBytes(), messages.getBytes().length, communicateGroup, ClientPort);
             socket.send(message);
     }
+    public static void firstMessage() throws IOException
+    {
+        sendMessages("Now " + UserData.getNickName() + " is join this group!\n");
+    }
 }

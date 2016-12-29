@@ -20,7 +20,7 @@ public class ChatController
 	private static String lastMes = "";
 
 	@FXML
-	protected void initialize()
+	protected void initialize() throws IOException
 	{
 		Thread thread = new Thread()
 		{
@@ -40,7 +40,8 @@ public class ChatController
 			}
 		};
 		thread.start();
-		informationLabel.setText("Your ID is: " + UserData.getNickName() + "\n In The Room: " + UserData.getRoomNumber());
+		informationLabel.setText("Your ID is: " + UserData.getNickName() + "\n In The Room: " + UserData.getRoomName());
+		Client.firstMessage();
 	}
 
 	public void printGetMessage()
