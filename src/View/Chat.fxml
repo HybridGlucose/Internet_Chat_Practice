@@ -22,6 +22,6 @@
       </SplitPane>
    </bottom>
    <center>
-      <TextArea fx:id="messageArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="messageArea" editable="false" onMouseClicked="#printGetMessage" prefHeight="200.0" prefWidth="200.0" wrapText="true" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

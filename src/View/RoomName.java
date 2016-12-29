@@ -18,7 +18,10 @@ public class RoomName
 	{
 		Model.Client.runClient(RoomNameField.getText());
 		Stage stage = (Stage) SubmitBtn.getScene().getWindow();
+		stage.hide();
+		stage.setTitle("Chat-ID: " + Model.UserData.getNickName());
 		stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Chat.fxml")),240,360));
+		stage.show();
 	}
 	public void cancelBtnOnClick()
 	{
