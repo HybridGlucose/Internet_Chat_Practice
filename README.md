@@ -1,5 +1,8 @@
 # Internet Chat Practice #
 Just For Practice (May be for homework...?).   
-And now GUI working (but need to improve).   
-After this time , have to complaete core code.   
+
+GUI is completed! And it work will:)
+I think I can get rest for a moment.
+Maybe I can improve GUI later.
+### Complete at 2016/12/30 ###
 ## By HybridGlucose and Felix ##
