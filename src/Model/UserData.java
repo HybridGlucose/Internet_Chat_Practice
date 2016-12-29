@@ -6,11 +6,7 @@ import java.util.List;
 public class UserData
 {
     private static String NickName;
-    private static String IP;
-    private static int port;
-    public static String theyNickName;
-    public static int count = 0;
-    public static List<onlineUser> onlineUsers = new ArrayList<onlineUser>();
+    private static String RoomName;
 
     public static void setNickName(String nickName)
     {
@@ -20,50 +16,14 @@ public class UserData
     {
         return NickName;
     }
-
-    public static void setIP(String IP)
+    public static  void setRoomName(String roomName)
     {
-        UserData.IP = IP;
+        RoomName = roomName;
     }
-    public static String getIP()
+    public static String getRoomName()
     {
-        return IP;
-    }
-
-    public static void setPort(int port)
-    {
-        UserData.port = port;
-    }
-    public static int getPort()
-    {
-        return port;
+        return RoomName;
     }
 
-    public static void addNewUser(String nickName,String IP)
-    {
-        onlineUsers.add(count,new onlineUser(nickName,IP));
-        count = count + 1;
-    }
-    public static void delUser(String nickName)
-    {
-        if(onlineUsers.iterator().equals(nickName))
-        {
-            onlineUsers.remove(onlineUsers.listIterator().previousIndex()+1);
-        }
-    }
 
-}
-
-class onlineUser
-{
-    private String nickName;
-    private String IP;
-    private int ID;
-
-    public onlineUser(String nickName, String ip)
-    {
-        this.nickName = nickName;
-        this.IP = ip;
-        this.ID = UserData.count;
-    }
 }
