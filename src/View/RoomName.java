@@ -1,5 +1,6 @@
 package View;
 
+import Model.UserData;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,6 +18,7 @@ public class RoomName
 	public void submitBtnOnClick() throws IOException
 	{
 		Model.Client.runClient(RoomNameField.getText());
+		UserData.setRoomNumber(RoomNameField.getText());
 		Stage stage = (Stage) SubmitBtn.getScene().getWindow();
 		stage.hide();
 		stage.setTitle("Chat-ID: " + Model.UserData.getNickName());

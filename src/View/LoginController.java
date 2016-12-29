@@ -22,8 +22,6 @@ public class LoginController
 		Stage stage  = (Stage) SubmitBtn.getScene().getWindow();
 		stage.hide();
 		//Show ModeSelect Stage.
-		//stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("ModeSelect.fxml")),480,280));
-		//stage.setTitle("Mode Select");
 		stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("RoomName.fxml")),480,280));
 		stage.setTitle("Room Name");
 		stage.show();

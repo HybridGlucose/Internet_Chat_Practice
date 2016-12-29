@@ -1,12 +1,12 @@
 package View;
 
+import Model.Client;
 import Model.UserData;
-import javafx.concurrent.Task;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -15,9 +15,9 @@ public class ChatController
 	public Button SendBtn;
 	public TextArea InputArea;
 	public TextArea messageArea;
+	public Label informationLabel;
 	private static String receiveMessage = "";
 	private static String lastMes = "";
-
 
 	@FXML
 	protected void initialize()
@@ -29,27 +29,38 @@ public class ChatController
 				while (true)
 				{
 					printGetMessage();
+					try
+					{
+						Thread.sleep(200);
+					} catch (InterruptedException e)
+					{
+						e.printStackTrace();
+					}
 				}
 			}
 		};
 		thread.start();
+		informationLabel.setText("Your ID is: " + UserData.getNickName() + "\n In The Room: " + UserData.getRoomNumber());
 	}
 
 	public void printGetMessage()
 	{
 		if (!receiveMessage.equals(lastMes))
 		{
-			messageArea.appendText("\n" + UserData.getNickName() + " say: " + receiveMessage);
-			lastMes = receiveMessage;
+			messageArea.appendText("\n" + receiveMessage);
+			lastMes = "";
+			receiveMessage = "";
 		}
 	}
 
 	public void sendBtnOnClick() throws IOException
 	{
-		String message = InputArea.getText();
-		Model.Client.sendMessages(message);
-		messageArea.appendText("\n" + UserData.getNickName() + " say: " + message);
-		InputArea.clear();
+		if(!InputArea.getText().isEmpty())
+		{
+			String message = InputArea.getText();
+			Model.Client.sendMessages(UserData.getNickName() + " Say: " + message);
+			InputArea.clear();
+		}
 	}
 
 	public static void receiveMessages(String messages)
