@@ -7,6 +7,7 @@ public class UserData
 {
     private static String NickName;
     private static String RoomName;
+    private static String Mode;
 
     public static void setNickName(String nickName)
     {
@@ -23,6 +24,14 @@ public class UserData
     public static String getRoomName()
     {
         return RoomName;
+    }
+    public static  void setMode(String mode)
+    {
+        Mode = mode;
+    }
+    public static String getMode()
+    {
+        return Mode;
     }
 
 

@@ -2,7 +2,6 @@ package View;
 
 import Model.Client;
 import Model.UserData;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -40,8 +39,22 @@ public class ChatController
 			}
 		};
 		thread.start();
-		informationLabel.setText("Your ID is: " + UserData.getNickName() + "\n In The Room: " + UserData.getRoomName());
-		Client.firstMessage();
+		if(UserData.getMode().equals("client"))
+		{
+			informationLabel.setText("Your ID is: " + UserData.getNickName() + "\n In The Room: " + UserData.getRoomName());
+			Client.firstMessage();
+		}
+		else
+		{
+			informationLabel.setText("Now You're Running in Server Mode!");
+			serverMode();
+			Model.Server.runServer();
+		}
+	}
+
+	public static void receiveMessages(String messages)
+	{
+		receiveMessage = messages;
 	}
 
 	public void printGetMessage()
@@ -54,6 +67,12 @@ public class ChatController
 		}
 	}
 
+	public void serverMode()
+	{
+		InputArea.setDisable(true);
+		SendBtn.setDisable(true);
+	}
+
 	public void sendBtnOnClick() throws IOException
 	{
 		if(!InputArea.getText().isEmpty())
@@ -62,11 +81,6 @@ public class ChatController
 			Model.Client.sendMessages(UserData.getNickName() + " Say: " + message);
 			InputArea.clear();
 		}
-	}
-
-	public static void receiveMessages(String messages)
-	{
-		receiveMessage = messages;
 	}
 
 }
