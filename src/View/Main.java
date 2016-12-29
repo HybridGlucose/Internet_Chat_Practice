@@ -19,7 +19,6 @@ public class Main extends Application
 		primaryStage.setTitle("ModeSelect");
 		primaryStage.setScene(new Scene(root, 300, 200));
 		primaryStage.setResizable(false);
-		primaryStage.getIcons().add(new Image("/icon/icon.png"));
 		primaryStage.show();
 
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>()
