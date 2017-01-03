@@ -1,5 +1,6 @@
 package View;
 
+import Model.UserData;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+
+import java.io.IOException;
 
 public class Main extends Application
 {
@@ -26,6 +29,16 @@ public class Main extends Application
 			@Override
 			public void handle(WindowEvent event)
 			{
+				if(UserData.getMode().equals("client"))
+				{
+					try
+					{
+						Model.Client.exitMessage();
+					} catch (IOException e)
+					{
+						e.printStackTrace();
+					}
+				}
 				System.exit(3333);
 			}
 		});

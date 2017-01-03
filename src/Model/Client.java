@@ -104,6 +104,11 @@ public class Client
     }
     public static void firstMessage() throws IOException
     {
-        sendMessages("Now " + UserData.getNickName() + " is join this group!\n");
+        sendMessages("Now " + UserData.getNickName() + " join this group!\n");
+    }
+
+    public static void exitMessage() throws IOException
+    {
+        sendMessages("Now " + UserData.getNickName() + " leave this group!\n");
     }
 }
